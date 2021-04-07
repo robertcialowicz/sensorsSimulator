@@ -37,9 +37,9 @@ docker run -it --rm --name temp-sensor --network sensorssimulator_default temp-s
 ```
 
 
-2. Check if messages were correctly processed ( mqtt -> kafka -> mongoDB )
-2.1. Go to `http://localhost:3000/`
-2.2. Crete connection using url: `mongodb://mongo-db/test?retryWrites=true` and Connect
-2.3. Go to Collections -> MyCollection -> Execute
-2.4. Messages from temp sensors should be visible
+2. Check if messages were correctly processed ( mqtt -> kafka -> mongoDB )<br/>
+2.1. Go to `http://localhost:3000/`<br/>
+2.2. Crete connection using url: `mongodb://mongo-db/test?retryWrites=true` and Connect<br/>
+2.3. Go to Collections -> MyCollection -> Execute<br/>
+2.4. Messages from temp sensors should be visible<br/>
 
