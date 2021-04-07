@@ -21,8 +21,8 @@ services:
       ZOO_PORT: 2181
       ZOO_SERVERS: server.1=zookeeper:2888:3888
     volumes:
-      - ./zookeeper/data:/data
-      - ./zookeeper/datalog:/datalog
+      - ./volumes/zookeeper/data:/data
+      - ./volumes/zookeeper/datalog:/datalog
   kafka:
     image: confluentinc/cp-kafka:5.1.0
     hostname: kafka
@@ -36,7 +36,7 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
-      - ./kafka/data:/var/lib/kafka/data
+      - ./volumes/kafka/data:/var/lib/kafka/data
     depends_on:
       - zookeeper
   kafka-connect:
@@ -63,7 +63,7 @@ services:
       CONNECT_PLUGIN_PATH: '/usr/share/java,/etc/kafka-connect/jars'
       CONNECT_CONFLUENT_TOPIC_REPLICATION_FACTOR: 1
     volumes:
-      - ./KafkaConnect/externals:/etc/kafka-connect/jars
+      - ./KafkaConnect/connectors:/etc/kafka-connect/jars
     depends_on:
       - zookeeper
       - kafka
@@ -78,7 +78,7 @@ services:
       - "27017:27017"
     command: --bind_ip_all --smallfiles
     volumes:
-      - ./mongo-db:/data
+      - ./volumes/mongo-db:/data
   mongoclient:
     image: mongoclient/mongoclient:4.0.1
     container_name: mongoclient
@@ -92,3 +92,12 @@ services:
       PORT: 3000
     expose:
       - "3000"
+  # temp-simulator:
+  #   build: tempSimulator/
+  #   depends_on:
+  #     - mosquitto
+  #     - kafka-connect
+  #     - kafka
+  #   # ports:
+  #   #   - "1883:1883"
+  

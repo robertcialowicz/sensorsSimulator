@@ -1,11 +1,11 @@
 {
-    "name": "mongodb-sink",
+    "name": "mongodb-sink-3",
     "config": {
         "connector.class": "at.grahsl.kafka.connect.mongodb.MongoDbSinkConnector",
         "tasks.max": 1,
-        "topics": "connect-custom",
+        "topics": "kaftemp3",
         "mongodb.connection.uri": "mongodb://mongo-db/test?retryWrites=true",
-        "mongodb.collection": "MyCollection",
+        "mongodb.collection": "temps3",
         "key.converter": "org.apache.kafka.connect.json.JsonConverter",
         "key.converter.schemas.enable": false,
         "value.converter": "org.apache.kafka.connect.json.JsonConverter",
