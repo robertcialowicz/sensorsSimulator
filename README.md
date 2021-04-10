@@ -24,7 +24,7 @@ docker-compose up
 
 2. Configure mqtt source connectors and mongodb sink connectors
 ```
-install-connectors.bat
+install-connectors.bat   or   bash install-connectors.sh
 ```
 
 
