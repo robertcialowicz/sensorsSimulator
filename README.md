@@ -43,3 +43,13 @@ docker run -it --rm --name temp-sensor --network sensorssimulator_default temp-s
 2.3. Go to Collections -> MyCollection -> Execute<br/>
 2.4. Messages from temp sensors should be visible<br/>
 
+
+
+## Testing Coap communication:
+### Example:
+
+install nodejs
+
+```npm i coap-cli```
+
+```coap get coap://localhost:5683/publish```
