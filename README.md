@@ -16,8 +16,7 @@ Szpila Magdalena <mszpila@student.agh.edu.pl>
 
 
 ## Dataflow
-
-SCHEMA TO BE ADDED HERE
+![dataflow](https://user-images.githubusercontent.com/62157661/118355005-14819a00-b56e-11eb-88ab-722c2b5fcb2d.png)
 
 ## How to run:
 
