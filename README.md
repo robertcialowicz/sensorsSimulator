@@ -12,7 +12,8 @@ Szpila Magdalena <mszpila@student.agh.edu.pl>
 
 
 ## Architecture
-![architecture](https://user-images.githubusercontent.com/62157661/113933870-6445a680-97f5-11eb-958d-f4eab547be92.png)
+![architektura](https://user-images.githubusercontent.com/62157661/118354451-6aa10e00-b56b-11eb-8ed5-5503d0ed8d27.png)
+
 
 ## Dataflow
 
