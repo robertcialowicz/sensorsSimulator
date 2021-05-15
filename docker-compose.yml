@@ -14,6 +14,8 @@ services:
     restart: unless-stopped
     hostname: zookeeper
     container_name: zookeeper
+    expose:
+      - "2181"
     ports:
       - "2181:2181"
     environment:
@@ -27,6 +29,8 @@ services:
     image: confluentinc/cp-kafka:5.1.0
     hostname: kafka
     container_name: kafka
+    expose:
+      - "9092"
     ports:
       - "9092:9092"
     environment:
@@ -43,6 +47,8 @@ services:
     image: confluentinc/cp-kafka-connect:5.1.0
     hostname: kafka-connect
     container_name: kafka-connect
+    expose:
+      - "8083"
     ports:
       - "8083:8083"
     environment:
@@ -92,17 +98,9 @@ services:
       PORT: 3000
     expose:
       - "3000"
-  # temp-simulator:
-  #   build: tempSimulator/
-  #   depends_on:
-  #     - mosquitto
-  #     - kafka-connect
-  #     - kafka
-  #   # ports:
-  #   #   - "1883:1883"
-
   coapserver:
-    build: CoapServer/target/
+    build: CoapServer/
+    container_name: coapserver
     depends_on:
       - mongo-db
     environment:
@@ -111,3 +109,11 @@ services:
       - "5683"
     ports:
       - "5683:5683/udp"
+  kafkastreams:
+    build: streams.examples/
+    container_name: kafkastreams
+    depends_on:
+      - kafka
+      - mongo-db
+      - kafka-connect
+    

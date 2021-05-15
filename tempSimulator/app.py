@@ -13,7 +13,7 @@ client.connect(host_ip, port, keepalive)
 i = 0
 
 while True:
-    time.sleep(0.1)
+    time.sleep(0.2)
     i+=1
     topic = random.choice(topics)
     message = "{\"created\": \"" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\",\"temperature\": {\"value\": " + str(round(random.uniform(19.5, 23.5),2)) + ",\"unit\": \"Celsius degree\"}}"
