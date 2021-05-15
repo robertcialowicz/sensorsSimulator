@@ -14,42 +14,34 @@ Szpila Magdalena <mszpila@student.agh.edu.pl>
 ## Architecture
 ![architecture](https://user-images.githubusercontent.com/62157661/113933870-6445a680-97f5-11eb-958d-f4eab547be92.png)
 
+## Dataflow
 
-## How to setup:
+SCHEMA TO BE ADDED HERE
 
-1. Launch docker images
+## How to run:
+
+Every procedure needed to run and test the application is included in powershell script.
+
 ```
-docker-compose up
-```
-
-2. Configure mqtt source connectors and mongodb sink connectors
-```
-install-connectors.bat   or   bash install-connectors.sh
-```
-
-
-## How to test:
-
-1. Simulate temp sensors by sending mqtt messages
-```
-docker build -t temp-sensor .\tempSimulator
-docker run -it --rm --name temp-sensor --network sensorssimulator_default temp-sensor
+.\run.ps1
 ```
 
+During script execution following steps are made:<br/>
+- Cleanup<br/>
+- Build KafkaStreams project<br/>
+- Build CoapServer project<br/>
+- Build and start docker containers<br/>
+- Install kafka connectors<br/>
+- Start mqtt producers (in new window)<br/>
+- Test coap endpoint (in new window)<br/>
 
-2. Check if messages were correctly processed ( mqtt -> kafka -> mongoDB )<br/>
+
+## Debug:
+
+1. Check if messages were correctly processed ( mqtt -> kafka -> mongoDB )<br/>
 2.1. Go to `http://localhost:3000/`<br/>
 2.2. Crete connection using url: `mongodb://mongo-db/test?retryWrites=true` and Connect<br/>
 2.3. Go to Collections -> MyCollection -> Execute<br/>
 2.4. Messages from temp sensors should be visible<br/>
 
 
-
-## Testing Coap communication:
-### Example:
-
-install nodejs
-
-```npm i coap-cli```
-
-```coap get coap://localhost:5683/publish```
