@@ -17,9 +17,12 @@ cd ..
 
 #Start docker images
 docker-compose up -d --build
-Start-Sleep -s 30
+
+#Wait for containers to be ready
+Start-Sleep -s 15
 
 #Install kafka connectors
+Invoke-Expression -Command ".\waitForDocker.ps1"
 Start-Process -FilePath ".\install-connectors.bat" -NoNewWindow -Wait
 Start-Sleep -s 3
 
@@ -31,7 +34,6 @@ Start-Sleep -s 3
 #Coap client
 cd CoapServer
 npm i coap-cli -g
-Start-Process -FilePath "powershell" -ArgumentList "-NoExit Start-Sleep -s 5; coap get coap://localhost:5683/publish"
+Start-Process -FilePath "powershell" -ArgumentList "-NoExit Start-Sleep -s 10; coap get coap://localhost:5683/publish"
 cd ..
 Start-Sleep -s 3
-
